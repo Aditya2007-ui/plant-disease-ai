@@ -7,7 +7,10 @@ CLASS_NAMES = ['Apple__Apple_scab', 'Apple_Black_rot', 'Apple_Cedar_apple_rust',
 
 PLANT_INFO = {
     "Tomato - Early blight": "Early blight is a fungal disease that causes brown spots with concentric rings on lower leaves. *Treatment:* Remove affected leaves, ensure good air circulation, and apply a copper-based fungicide.",
+    "Tomato - Late blight": "Late blight is a highly destructive disease that causes irregular, dark, water-soaked spots on leaves. *Treatment:* Remove and destroy all infected plant parts immediately. Apply a copper fungicide to protect healthy tissue.",
     "Tomato - healthy": "This tomato leaf looks perfectly healthy! Keep up the good work with proper watering and sunlight.",
+    "Strawberry - Leaf scorch": "Leaf scorch is a fungal disease causing irregular purple or brown spots on the upper leaf surface. *Treatment:* Remove infected leaves and improve air circulation. Apply a fungicide if the infection is severe.",
+    "Strawberry - healthy": "This strawberry leaf is healthy and shows no signs of fungal or bacterial disease!",
     "Apple - Apple scab": "Apple scab appears as olive-green to black spots on leaves and fruit. *Treatment:* Rake up fallen leaves in autumn and use fungicides preventatively in early spring.",
     "Corn(maize) - healthy": "Your corn is looking great and shows no signs of common leaf diseases!"
 }
