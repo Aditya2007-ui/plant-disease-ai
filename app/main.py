@@ -14,6 +14,7 @@ PLANT_INFO = {
 
 st.set_page_config(page_title="Plant Disease Predictor", page_icon="🌿")
 st.title("🌿 AI Plant Disease Identifier")
+st.caption("Project by Aditya Pagare")
 st.write("Upload a picture of a plant leaf, and the AI will diagnose it instantly!")
 
 @st.cache_resource
