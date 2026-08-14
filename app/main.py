@@ -44,7 +44,7 @@ if uploaded_file is not None:
     predicted_class = CLASS_NAMES[np.argmax(score)]
     confidence = 100 * np.max(score)
     
-    clean_name = predicted_class.replace("_", " - ").replace("_", " ")
+    clean_name = predicted_class.replace("_", " - ").replace("_", " ").strip()
     
     st.success(f"*Prediction:* {clean_name}")
     st.info(f"*Confidence:* {confidence:.2f}%")
