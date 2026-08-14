@@ -12,7 +12,8 @@ PLANT_INFO = {
     "Strawberry - Leaf scorch": "Leaf scorch is a fungal disease causing irregular purple or brown spots on the upper leaf surface. *Treatment:* Remove infected leaves and improve air circulation.",
     "Strawberry - healthy": "This strawberry leaf is healthy and shows no signs of fungal or bacterial disease!",
     "Apple - Apple scab": "Apple scab appears as olive-green to black spots on leaves and fruit. *Treatment:* Rake up fallen leaves in autumn and use fungicides preventatively in early spring.",
-    "Corn(maize) - healthy": "Your corn is looking great and shows no signs of common leaf diseases!"
+    "Corn(maize) - healthy": "Your corn is looking great and shows no signs of common leaf diseases!",
+    "Tomato - Leaf Mold": "Leaf mold is a fungal disease that typically appears as pale green or yellow spots on the upper side of older leaves, with a velvety olive-green fungus on the underside. *Treatment:* Improve air circulation by pruning, avoid overhead watering, and use preventative copper fungicides."
 }
 
 st.set_page_config(page_title="Plant Disease Predictor", page_icon="🌿")
