@@ -14,7 +14,7 @@ PLANT_INFO = {
     "Apple - Apple scab": "Apple scab appears as olive-green to black spots on leaves and fruit. *Treatment:* Rake up fallen leaves in autumn and use fungicides preventatively in early spring.",
     "Corn(maize) - healthy": "Your corn is looking great and shows no signs of common leaf diseases!",
     "Tomato - Leaf Mold": "Leaf mold is a fungal disease that typically appears as pale green or yellow spots on the upper side of older leaves, with a velvety olive-green fungus on the underside. *Treatment:* Improve air circulation by pruning, avoid overhead watering, and use preventative copper fungicides."
-
+}
 st.set_page_config(page_title="Plant Disease Predictor", page_icon="🌿")
 st.title("🌿 AI Plant Disease Identifier")
 st.caption("Project by Aditya Pagare")
