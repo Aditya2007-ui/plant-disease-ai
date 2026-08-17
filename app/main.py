@@ -14,6 +14,13 @@ PLANT_INFO = {
     "Apple - Apple scab": "Apple scab appears as olive-green to black spots on leaves and fruit. *Treatment:* Rake up fallen leaves in autumn and use fungicides preventatively in early spring.",
     "Corn(maize) - healthy": "Your corn is looking great and shows no signs of common leaf diseases!",
     "Tomato - Leaf Mold": "Leaf mold is a fungal disease that typically appears as pale green or yellow spots on the upper side of older leaves, with a velvety olive-green fungus on the underside. *Treatment:* Improve air circulation by pruning, avoid overhead watering, and use preventative copper fungicides."
+    "early blight": "Early blight is a fungal disease that causes brown spots with concentric rings on lower leaves. *Treatment:* Remove affected leaves, ensure good air circulation, and apply a copper-based fungicide.",
+    "late blight": "Late blight is a highly destructive disease that causes irregular, dark, water-soaked spots on leaves. *Treatment:* Remove and destroy all infected plant parts immediately. Apply a copper fungicide to protect healthy tissue.",
+    "leaf scorch": "Leaf scorch is a fungal disease causing irregular purple or brown spots on the upper leaf surface. *Treatment:* Remove infected leaves and improve air circulation.",
+    "apple scab": "Apple scab appears as olive-green to black spots on leaves and fruit. *Treatment:* Rake up fallen leaves in autumn and use fungicides preventatively in early spring.",
+    "mold": "Leaf mold is a fungal disease that typically appears as pale green or yellow spots on the upper side of older leaves, with a velvety olive-green fungus on the underside. *Treatment:* Improve air circulation by pruning, avoid overhead watering, and use preventative copper fungicides.",
+    "septoria": "Septoria leaf spot is a destructive fungal disease that causes numerous small, circular spots with dark borders and light gray centers, usually starting on the lower leaves. *Treatment:* Remove and destroy infected leaves immediately. Water at the base of the plant to keep leaves dry, and apply a preventative copper-based fungicide.",
+    "healthy": "This leaf looks perfectly healthy! Keep up the good work with proper watering and sunlight."
 }
 
 st.set_page_config(page_title="Plant Disease Predictor", page_icon="🌿")
