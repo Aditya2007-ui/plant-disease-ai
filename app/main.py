@@ -30,7 +30,37 @@ model = load_model()
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png", "webp"])
 
 if uploaded_file is not None:
-    image = Image.open(uploaded_file)
+    image = Image.open(uploaded_file).convert("RGB")
     st.image(image, caption='Your Uploaded Leaf', use_container_width=True)
     
-    st.write("Analyzing...")
+    with st.spinner("Analyzing image..."):
+        img = image.resize((224, 224))
+        img_array = tf.keras.preprocessing.image.img_to_array(img)
+        img_array = tf.expand_dims(img_array, 0)
+        
+        predictions = model.predict(img_array, verbose=0)
+        score = tf.nn.softmax(predictions[0])
+        predicted_class = CLASS_NAMES[np.argmax(score)]
+        confidence = float(100 * np.max(score))
+    
+    if confidence < 50:
+        st.error("⚠️ *Error: This does not look like a valid plant leaf!*")
+        st.warning(f"The AI is only {confidence:.2f}% confident. Please upload a clear picture of a single leaf on a solid background.")
+    else:
+        clean_name = predicted_class.replace("_", " - ").replace("_", " ").strip()
+        
+        st.success(f"*Prediction:* {clean_name}")
+        st.info(f"*Confidence:* {confidence:.2f}%")
+        
+        st.divider() 
+        st.subheader("📖 About this Prediction")
+        
+        extra_details = "Detailed information and treatment steps for this specific plant/disease will be added to our database soon!"
+        clean_name_lower = clean_name.lower()
+        
+        for keyword, info in PLANT_INFO.items():
+            if keyword in clean_name_lower:
+                extra_details = info
+                break
+                
+        st.write(extra_details)
