@@ -43,7 +43,7 @@ if uploaded_file is not None:
         predicted_class = CLASS_NAMES[np.argmax(score)]
         confidence = float(100 * np.max(score))
     
-    if confidence < 4:
+    if confidence < 5:
         st.error("⚠️ *Error: This does not look like a valid plant leaf!*")
         st.warning(f"The AI is only {confidence:.2f}% confident. Please upload a clear picture of a single leaf on a solid background.")
     else:
