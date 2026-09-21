@@ -42,7 +42,7 @@ st.write("---")
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("plant_disease_model.keras")
+    return tf.keras.models.load_model("models/plant_disease_model.keras")
 
 try:
     model = load_model()
