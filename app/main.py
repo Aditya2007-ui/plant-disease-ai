@@ -47,7 +47,7 @@ def load_model():
 try:
     model = load_model()
 except Exception as e:
-    st.error("Error loading model. Ensure your .keras file is in the same folder.")
+    st.error(f"System Frror:{e}")
     st.stop()
 
 class_names = [
