@@ -117,13 +117,12 @@ with col2:
                         st.warning(f"The AI is only {confidence:.2f}% confident. Please upload a clear picture of a single leaf on a solid background.")
                     else:
                         clean_name = predicted_class.replace("_", " - ").replace("", " ").strip()
-                        search_name = clean_name.lower().replace("-", " ")
                         
                         st.markdown(f"<h3 style='text-align: center; color: #2e7d32;'>{clean_name}</h3>", unsafe_allow_html=True)
                         
                         metric_col1, metric_col2 = st.columns(2)
                         with metric_col1:
-                            status_text = "Healthy" if "healthy" in search_name else "Diseased"
+                            status_text = "Healthy" if "healthy" in predicted_class.lower() else "Diseased"
                             st.metric(label="Plant Status", value=status_text)
                         with metric_col2:
                             st.metric(label="AI Confidence", value=f"{confidence:.2f}%")
@@ -132,15 +131,19 @@ with col2:
                         
                         extra_details = "Detailed information and treatment steps for this specific plant/disease will be added to our database soon!"
                         
+                        # Strip all hyphens, underscores, and spaces to force a perfect dictionary match
+                        search_target = predicted_class.lower().replace("_", "").replace("-", "").replace(" ", "")
+                        
                         for keyword, info in PLANT_INFO.items():
-                            if keyword in search_name:
+                            clean_keyword = keyword.lower().replace(" ", "")
+                            if clean_keyword in search_target:
                                 extra_details = info
                                 break
                         
                         st.write("")
                         st.subheader("📖 Treatment & Information")
                         
-                        if "healthy" in search_name:
+                        if "healthy" in search_target:
                             st.balloons()
                             st.success(f"*{extra_details}*")
                         else:
