@@ -12,6 +12,16 @@ custom_css = """
     .stApp {
         background-color: #f4f9f4;
     }
+    [data-testid="stMetricValue"] {
+        color: #111111 !important;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #444444 !important;
+        font-weight: 600 !important;
+    }
+    .stMarkdown p, .stMarkdown span {
+        color: #222222 !important;
+    }
     .title-text {
         color: #2e7d32;
         text-align: center;
@@ -20,7 +30,7 @@ custom_css = """
         margin-bottom: 0px;
     }
     .subtitle-text {
-        color: #555555;
+        color: #555555 !important;
         text-align: center;
         font-size: 20px;
         margin-top: -10px;
@@ -29,7 +39,7 @@ custom_css = """
     .author-text {
         text-align: center;
         font-size: 16px;
-        color: #888888;
+        color: #888888 !important;
     }
 </style>
 """
@@ -45,6 +55,17 @@ PLANT_INFO = {
     "mold": "Leaf mold is a fungal disease that typically appears as pale green or yellow spots on the upper side of older leaves, with a velvety olive-green fungus on the underside. Treatment: Improve air circulation by pruning, avoid overhead watering, and use preventative copper fungicides.",
     "septoria": "Septoria leaf spot is a destructive fungal disease that causes numerous small, circular spots with dark borders and light gray centers. Treatment: Remove infected leaves immediately and apply a copper-based fungicide.",
     "cercospora": "Cercospora leaf spot (Gray leaf spot) is a fungal disease that creates rectangular, pale brown to gray spots on leaves. Treatment: Use crop rotation, remove plant debris, and apply appropriate fungicides if severe.",
+    "bacterial spot": "Bacterial spot causes dark, water-soaked spots on leaves and fruit. Treatment: Spray with copper-based bactericides and avoid overhead watering.",
+    "black rot": "Black rot is a fungal disease causing brown circular spots. Treatment: Prune out infected parts and apply a fungicide.",
+    "rust": "Rust appears as rusty orange or brown spots on the undersides of leaves. Treatment: Remove infected leaves and use a fungicide labeled for rust.",
+    "powdery mildew": "Powdery mildew shows up as a white, powdery fungal growth on leaves. Treatment: Improve air circulation and apply a sulfur or potassium bicarbonate fungicide.",
+    "spider mites": "Spider mites cause stippling and yellowing of leaves, often with fine webbing. Treatment: Wash plants with a strong stream of water and use insecticidal soap or neem oil.",
+    "target spot": "Target spot causes dark brown lesions with concentric rings. Treatment: Ensure adequate spacing for airflow and apply fungicides.",
+    "curl virus": "Yellow Leaf Curl Virus causes severe stunting and upward curling of leaves. Treatment: Remove infected plants immediately and control whitefly populations.",
+    "mosaic virus": "Mosaic virus causes a mottled pattern of light and dark green on leaves. Treatment: There is no cure; remove and destroy infected plants and wash hands/tools thoroughly.",
+    "leaf blight": "Leaf blight causes large, irregular brown spots. Treatment: Use fungicides and clear away dead plant matter.",
+    "esca": "Esca (Black Measles) is a fungal disease of the wood that causes leaf striping. Treatment: Prune out infected wood and use protective pruning wound sealants.",
+    "greening": "Citrus greening (Huanglongbing) causes yellowing leaves and misshapen fruit. Treatment: There is no cure; remove infected trees and control the Asian citrus psyllid insect.",
     "healthy": "This leaf looks perfectly healthy! Keep up the good work with proper watering and sunlight."
 }
 
@@ -96,13 +117,13 @@ with col2:
                         st.warning(f"The AI is only {confidence:.2f}% confident. Please upload a clear picture of a single leaf on a solid background.")
                     else:
                         clean_name = predicted_class.replace("_", " - ").replace("", " ").strip()
-                        clean_name_lower = clean_name.lower()
+                        search_name = clean_name.lower().replace("-", " ")
                         
                         st.markdown(f"<h3 style='text-align: center; color: #2e7d32;'>{clean_name}</h3>", unsafe_allow_html=True)
                         
                         metric_col1, metric_col2 = st.columns(2)
                         with metric_col1:
-                            status_text = "Healthy" if "healthy" in clean_name_lower else "Diseased"
+                            status_text = "Healthy" if "healthy" in search_name else "Diseased"
                             st.metric(label="Plant Status", value=status_text)
                         with metric_col2:
                             st.metric(label="AI Confidence", value=f"{confidence:.2f}%")
@@ -112,14 +133,14 @@ with col2:
                         extra_details = "Detailed information and treatment steps for this specific plant/disease will be added to our database soon!"
                         
                         for keyword, info in PLANT_INFO.items():
-                            if keyword in clean_name_lower:
+                            if keyword in search_name:
                                 extra_details = info
                                 break
                         
                         st.write("")
                         st.subheader("📖 Treatment & Information")
                         
-                        if "healthy" in clean_name_lower:
+                        if "healthy" in search_name:
                             st.balloons()
                             st.success(f"*{extra_details}*")
                         else:
